@@ -1,4 +1,4 @@
 # Doretto Stock #
 #### Video Demo:  <https://youtu.be/jufRD80WXM0>
-#### Description:
+#### Description: In soon
 #### 
