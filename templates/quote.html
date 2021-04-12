@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="./static/css/buy.css">
+    <style>
+        .alert-stock {z-index: {{z_index_s}};}
+    </style>
+{% endblock %}
+
+{% block main %}
+    {% if not stock %}
+    <h2>Quote</h2>
+    <form action="/quote" method="post">
+        <div class="input-field">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+            <div class="underline"></div>
+            <div class="alert"><p class="alert-stock">Symbol not find</p></div>
+        </div>
+        <input type="submit" value="Quote">
+    </form><br><br>
+    {% endif %}
+    {% if stock %}
+        <p class="p-quote">A share of {{stock['name']}} ({{stock['symbol']}}) costs {{stock['price']}}.</p>
+    {% endif %}
+{% endblock %}

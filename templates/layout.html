@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ===== BOX ICONS =====-->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- ===== CSS =====-->
+    {% block style %}{% endblock %}
+    <link href="./static/img/favicon.png" rel="icon">
+    <title>CStock50'x</title>
+</head>
+<body>
+    <!-- ========= HEADER =========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <div class="title__logo">
+                Doretto's<a href="/index" class="nav__logo__blue"> Stock</a>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/quote" class="nav__link">Quote</a></li>
+                    <li class="nav__item"><a href="/buy" class="nav__link">Buy</a></li>
+                    <li class="nav__item"><a href="/sell" class="nav__link">Sell</a></li>
+                    <li class="nav__item"><a href="/history" class="nav__link">History</a></li>
+                    <li class="nav__item nav__item__100 nav__item__logout"><a href="/logout" class="nav__link">Log Out</a></li>
+                </ul>
+            </div>
+            <div class="logout">
+                <a href="/logout" class="nav__link nav__logout">Log Out</a>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+    {% if get_flashed_messages() %}
+        <header>
+            <div class="alert alert-primary border text-center" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+    {% endif %}
+
+    <main class="container">
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer class="footer__data">
+        Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.
+    </footer>
+
+
+    <!-- ========= MAIN JS ========== -->
+    <script src="./static/js/main.js"></script>
+</body>
+</html>

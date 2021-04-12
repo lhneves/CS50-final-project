@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./static/css/register.css">
+    <link href="./static/img/favicon.png" rel="icon">
+    <style>
+        .alert-username {z-index: {{z_index_u}};}
+        .alert-password {z-index: {{z_index_p}};}
+        .alert-match {z-index: {{z_index_m}};}
+        .alert-exist {z-index: {{z_index_e}};}
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h2>Register</h2>
+        <form action="/register" method="post">
+            <p>Register or <a href='/login'>login</a> if you already have an account</p><br>
+            <div class="input-field">
+                <input type="text" name="username" id="username" placeholder="Enter your username" autocomplete="off">
+                <div class="underline"></div>
+                <div class="alert"><p class="alert-username">Must provide username</p></div>
+            </div>
+
+            <div class="input-field">
+                <input type="password" name="password" id="password" placeholder="Enter your password">
+                <div class="underline"></div>
+                <div class="alert"><p class="alert-password">Must provide password</p></div>
+            </div>
+
+            <div class="input-field">
+                <input type="password" name="confirm-password" id="confirm-pass" placeholder="Confirm your password">
+                <div class="underline"></div>
+                <div class="alert"><p class="alert-match">The password don't match</p></div>
+            </div>
+
+            <input id="submit" type="submit" value="Continue">
+            <div class="alert"><p class="alert-exist">Username already exist</p></div>
+        </form>
+    </main>
+    <div class="footer">
+        <footer>
+           <span>Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.</span>
+        </footer>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./static/css/register.css">
+    <link href="./static/img/favicon.png" rel="icon">
+    <style>
+        .alert-username {z-index: {{z_index_u}};}
+        .alert-password {z-index: {{z_index_p}};}
+        .alert-new-password {z-index: {{z_index_n_p}};}
+        .alert-match {z-index: {{z_index_m}};}
+        .alert-exist {z-index: {{z_index_e}};}
+        .alert-password-invalid {z-index: {{z_index_i}};}
+    </style>
+</head>
+<body>
+    <main class="container">
+    <h2>Change password</h2>
+        <form action="/change" method="post">
+            <div class="input-field">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+                <div class="underline"></div>
+                <div class="alert"><p class="alert-username">Must provide username</p></div>
+                <div class="alert"><p class="alert-exist">The username does not exist</p></div>
+            </div>
+            <div class="input-field">
+                <input class="form-control" name="old-password" placeholder="Old password" type="password">
+                <div class="underline"></div>
+                <div class="alert"><p class="alert-password">Must provide old password</p></div>
+                <div class="alert"><p class="alert-password-invalid">Invalid old password</p></div>
+            </div>
+            <div class="input-field">
+                <input class="form-control" name="password" placeholder="New password" type="password">
+                <div class="underline"></div>
+                <div class="alert"><p class="alert-new-password">Must provide new password</p></div>
+            </div>
+            <div class="input-field">
+                <input id='confirm-pass' class="form-control" name="confirm-password" placeholder="Confirm Password" type="password">
+                <div class="underline"></div>
+                <div class="alert"><p class="alert-match">The password does not match</p></div>
+            </div>
+             <input id="submit" type="submit" value="Change password">
+        </form>
+    </main>
+    <div class="footer">
+        <footer>
+           <span>Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.</span>
+        </footer>
+    </div>
+</body>
+</html>
+
+
+
+

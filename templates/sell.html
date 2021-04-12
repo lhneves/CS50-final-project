@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="./static/css/buy.css">
+    <style>
+        .alert-stock {z-index: {{z_index_stock}};}
+        .alert-shares {z-index: {{z_index_shares}};}
+        .alert-enough-shares {z-index: {{z_index_enough_shares}};}
+    </style>
+{% endblock %}
+
+{% block main %}
+     <h2>Sell</h2>
+     <form action="/sell" method="post">
+        <div class="input-field">
+            <select class="form-control" name="symbol">
+                <option disabled selected value="">Symbol</option>
+                {% for symbol in symbols%}
+                    <option value= {{symbol['symbol']}}>{{symbol['symbol']}}</option>
+                {% endfor %}
+                <div class="underline"></div>
+            </select>
+            <div class="alert"><p class="alert-stock">Missing symbol</p></div>
+        </div>
+        <div class="input-field">
+            <input autocomplete="off" class="form-control" min="0" name="shares" placeholder="Shares" type="number">
+            <div class="underline"></div>
+            <div class="alert"><p class="alert-shares">Missing shares</p></div>
+            <div class="alert"><p class="alert-enough-shares">You don't have enough shares</p></div>
+        </div>
+        <input type="submit" value="Sell">
+    </form>
+{% endblock %}

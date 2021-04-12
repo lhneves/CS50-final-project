@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="./static/css/index.css">
+{% endblock %}
+
+{% block main %}
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td style="font-weight:bold" >{{ total }}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{ stock[0] }}</td>
+                <td>{{ stock[1] }}</td>
+                <td>{{ stock[2] }}</td>
+                <td>{{ stock[3] }}</td>
+                <td>{{ stock[4] }}</td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td scope="row">CASH</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    <div class="chart">
+        <canvas id="myChart" width="200" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [{% for stocks_chart in stocks_chart %}
+                                    '{{ stocks_chart[0] }}',
+                                 {% endfor %}
+                        ],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [{% for stocks_chart in stocks_chart %}
+                                    {{ stocks_chart[1] }},
+                                   {% endfor %}],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                });
+        </script>
+    </div>
+{% endblock %}

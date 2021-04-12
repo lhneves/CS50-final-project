@@ -1,0 +1,328 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*===== VARIABLES CSS =====*/
+
+:root {
+  --header-height: 3rem;
+  --first-color: #4060ff;
+  --first-color-alt: #93c1ff;
+  --title-color: #f0e7e7ef;
+  --text-color: #bebaba;
+  --text-color-light: #e4d9d9;
+  --body-color: #393939;
+  --container-color: #3d3c3c;
+
+  /*===== FONT AND TYPOGRAPHY =====*/
+  --body-font: "Poppins", sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*===== Font weight =====*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*===== Margenes =====*/
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  /*===== z-index =====*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/*========== BASE ==========*/
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*========== LAYOUT ==========*/
+.bd-container {
+  max-width: 960px;
+  width: clamp(100% - 2rem);
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+
+.bd-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+}
+
+.nav {
+  max-width: 1024px;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0 1rem;
+    text-align: center;
+    background-color: var(--body-color);
+    transition: 0.4s;
+    box-shadow: 0 2px 2px rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 1rem 1rem;
+    z-index: var(--z-fixed);
+  }
+
+  .nav__logout{
+    position: fixed;
+    top: -100%;
+  }
+}
+
+
+.nav__logo__blue {
+  color: var(--first-color);
+}
+
+.nav__item {
+  margin-bottom: var(--mb-2);
+}
+
+.nav__link,
+.nav__logo,
+.nav__toggle,
+.nav__login {
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+}
+
+.nav__logo:hover {
+  color: var(--first-color);
+}
+
+.nav__link {
+  transition: 0.3s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__toggle {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Show menu */
+.show-menu {
+  top: var(--header-height);
+}
+
+/* Active menu */
+.active-link {
+  color: var(--first-color);
+}
+
+.footer__data{
+  font-size: .875rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+/*========== TABLE ==========*/
+.container{
+  margin-top: calc(var(--header-height) + 2rem);
+  width: 100%;
+}
+
+.content-table{
+  border-collapse: collapse;
+  font-size: 0.9em;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.15);
+}
+
+.content-table thead tr{
+  background-color: var(--first-color);
+  color: #ffffff;
+  text-align: left;
+  font-weight: var(--font-semi-bold);
+}
+
+.content-table tbody{
+  background-color: white;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 13px;
+  color: var(--body-color)
+}
+
+.content-table tbody tr {
+  border-bottom:  1px solid #81a0c4;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #ebe8e8d0;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--first-color);
+}
+
+.content-table tfoot{
+  background-color: white;
+}
+
+/*========== CHART ==========*/
+.chart{
+    width: 400px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*========== MEDIA QUERIES ==========*/
+@media screen and (min-width: 480px) {
+  .content-table{
+     width: calc(100vw - 20rem);
+     margin-left: auto;
+     margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  body {
+    margin: 0;
+  }
+
+  .section {
+    padding-top: 8rem;
+  }
+
+  .nav {
+    display: grid;
+    height: calc(var(--header-height) + 1.5rem);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .nav__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .nav__item {
+    margin-left: var(--mb-5);
+    margin-bottom: 0;
+  }
+
+  .nav__item__logout{
+    position: fixed;
+    top: -100%;
+  }
+
+  .logout{
+    text-align: right;
+  }
+
+  .nav__login {
+    margin-top: 1.3rem;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+
+  .content-table{
+    width: (100vw - 10rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+
+
+@media screen and (min-width: 960px) {
+  .bd-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .title__logo{
+    margin-left: 10px;
+  }
+
+  .logout{
+    margin-right: 10px;
+  }
+
+}

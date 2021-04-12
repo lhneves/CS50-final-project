@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="./static/css/buy.css">
+    <style>
+        .alert-stock {z-index: {{z_index_stock}};}
+        .alert-stock-inv {z-index: {{z_index_i}};}
+        .alert-shares {z-index: {{z_index_shares}};}
+        .alert-afford {z-index: {{z_index_a}};}
+    </style>
+{% endblock %}
+
+{% block main %}
+    <h2>Buy</h2>
+    <form action="/buy" method="post">
+        <div class="input-field">
+            <input type="text" name="symbol" id="username" placeholder="Symbol" autocomplete="off" autofocus>
+            <div class="underline"></div>
+            <div class="alert"><p class="alert-stock">Missing symbol</p></div>
+            <div class="alert"><p class="alert-stock-inv">Invalid symbol</p></div>
+        </div>
+
+        <div class="input-field">
+            <input autocomplete="off" class="form-control" min="1" name="shares" placeholder="Shares" type="number">
+            <div class="underline"></div>
+            <div class="alert"><p class="alert-shares">Missing shares</p></div>
+            <div class="alert"><p class="alert-afford">Can't afford</p></div>
+        </div>
+
+        <input type="submit" value="Buy">
+    </form>
+
+{% endblock %}
